@@ -17,6 +17,8 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
+    CREATE_PROFILE_SUCCESS,
+    CREATE_PROFILE_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -24,6 +26,7 @@ const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
+    isSignin : null,
     user: null
 };
 
@@ -37,6 +40,9 @@ export default function(state = initialState, action) {
                 isAuthenticated: true
             }
         case LOGIN_SUCCESS:
+            return {
+                isSignin : true
+            }
         case GOOGLE_AUTH_SUCCESS:
         case FACEBOOK_AUTH_SUCCESS:
             localStorage.setItem('access', payload.access);

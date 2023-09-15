@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './containers/Home';
@@ -9,6 +10,7 @@ import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Facebook from './containers/Facebook';
 import Google from './containers/Google';
+import CreateProfile from './containers/CreateProfile';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -28,6 +30,7 @@ const App = () => (
                     <Route exact path='/reset-password' component={ResetPassword} />
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
+                    <Route exact path='/create-profile' component={CreateProfile} />
                 </Switch>
             </Layout>
         </Router>

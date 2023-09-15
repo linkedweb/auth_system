@@ -18,7 +18,9 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
-    LOGOUT
+    LOGOUT,
+    CREATE_PROFILE_SUCCESS,
+    CREATE_PROFILE_FAIL
 } from './types';
 
 export const load_user = () => async dispatch => {
@@ -268,4 +270,27 @@ export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
     });
+};
+
+export const createprofle = (name, email, contact, designation, organization,radiodetails, radiosetdetail) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ name, email, contact, designation, organization,radiodetails, radiosetdetail });
+
+    try {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
+
+        dispatch({
+            type: CREATE_PROFILE_SUCCESS,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: CREATE_PROFILE_FAIL
+        })
+    }
 };
