@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../actions/auth';
-import axios from 'axios';
+import axios from 'axios'; 
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false);
@@ -47,12 +47,12 @@ const Signup = ({ signup, isAuthenticated }) => {
         }
     };
 
-    if (isAuthenticated) {
-        return <Redirect to='/' />
-    }
-    if (accountCreated) {
-        return <Redirect to='/login' />
-    }
+    // if (isAuthenticated) {
+    //     return <Redirect to='/' />
+    // }
+    // if (accountCreated) {
+    //     return <Redirect to='/login' />
+    // }
 
     return (
         <div className='container mt-5'>

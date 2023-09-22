@@ -187,8 +187,10 @@ export const signup = (first_name, last_name, email, password, re_password) => a
     const body = JSON.stringify({ first_name, last_name, email, password, re_password });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
-
+        console.log('debug-1');
+        const res = await axios.post(`http://localhost:8000/auth/users/`, body, config);
+        console.log('debug');
+        // const res = await axios.post(`http://localhost:8000/auth/users/`, body, config);
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
+import './Navbar.css';
 
 const Navbar = ({ logout, isAuthenticated }) => {
     const [redirect, setRedirect] = useState(false);
@@ -19,10 +20,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
             <li className='nav-item'>
                 <Link className='nav-link' to='/signup'>Sign Up</Link>
             </li>
-            <li className='nav-item' text-align='right'>
-                <Link className='nav-link' to='/profile' >Profile</Link>
-            </li>
 
+            {/* <li className='topnav-right'>
+                <Link className='nav-link' to='/profile' style={{textAlign: 'right'}}>Profile</Link>
+            </li> */}
         </Fragment>
     );
 
