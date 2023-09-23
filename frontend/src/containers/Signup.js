@@ -47,12 +47,12 @@ const Signup = ({ signup, isAuthenticated }) => {
         }
     };
 
-    // if (isAuthenticated) {
-    //     return <Redirect to='/' />
-    // }
-    // if (accountCreated) {
-    //     return <Redirect to='/login' />
-    // }
+    if (isAuthenticated) {
+        return <Redirect to='/' />
+    }
+    if (accountCreated) {
+        return <Redirect to='/login' />
+    }
 
     return (
         <div className='container mt-5'>
@@ -100,7 +100,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='password'
                         value={password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='1'
                         required
                     />
                 </div>
@@ -112,7 +112,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='re_password'
                         value={re_password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='1'
                         required
                     />
                 </div>

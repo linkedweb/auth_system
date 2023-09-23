@@ -26,9 +26,7 @@ SECRET_KEY = 'g=!&gyqa-qj3q(=-(=$gxrcb_-zb4l)b!#6xa2hrj_m5kxyet)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1:8000', 'localhost'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,7 +42,7 @@ INSTALLED_APPS = [
     'djoser',
     'accounts',
     'social_django',
-    # 'corsheaders',
+    'corsheaders',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist'
 ]
@@ -65,9 +63,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://google.com',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000/'
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'auth_system.urls'
@@ -214,3 +210,26 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 }
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_METHODS = [
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+]

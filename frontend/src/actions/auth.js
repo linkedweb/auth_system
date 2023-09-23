@@ -18,9 +18,7 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
-    LOGOUT,
-    CREATE_PROFILE_SUCCESS,
-    CREATE_PROFILE_FAIL
+    LOGOUT
 } from './types';
 
 export const load_user = () => async dispatch => {
@@ -185,17 +183,20 @@ export const signup = (first_name, last_name, email, password, re_password) => a
     };
 
     const body = JSON.stringify({ first_name, last_name, email, password, re_password });
-
+    console.log(body);
     try {
-        console.log('debug-1');
-        const res = await axios.post(`http://localhost:8000/auth/users/`, body, config);
-        console.log('debug');
-        // const res = await axios.post(`http://localhost:8000/auth/users/`, body, config);
+        const res1 = await axios.get('google.com',config);
+        console.log(res1);
+        const res = await axios.post('http://localhost:8000/auth/users/', body, config);
+        console.log('request posted');
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
-    } catch (err) {
+        console.log('payload dispatched');
+    } 
+    catch (err) {
+        console.log(err)
         dispatch({
             type: SIGNUP_FAIL
         })
@@ -272,27 +273,4 @@ export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
     });
-};
-
-export const createprofle = (name, email, contact, designation, organization,radiodetails, radiosetdetail) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    const body = JSON.stringify({ name, email, contact, designation, organization,radiodetails, radiosetdetail });
-
-    try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
-
-        dispatch({
-            type: CREATE_PROFILE_SUCCESS,
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: CREATE_PROFILE_FAIL
-        })
-    }
 };
