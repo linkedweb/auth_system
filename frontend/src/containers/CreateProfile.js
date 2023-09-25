@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createprofile } from '../actions/auth';
-import axios from 'axios';
 
-const CreateProfile = ({ createprofile }) => {
+
+
+const CreateProfile = ({ createprofile,isProfileCreated }) => {
     const [profileCreated, setProfileCreated] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -118,8 +119,9 @@ const CreateProfile = ({ createprofile }) => {
     );
 };
 
-// const mapStateToProps = state => ({
-//     isSignin: state.auth.isSignin
-// });
+const mapStateToProps = state => ({
+    isProfileCreated: state.auth.isProfileCreated
+});
 
-export default (CreateProfile);
+
+export default connect(mapStateToProps, { createprofile })(CreateProfile);

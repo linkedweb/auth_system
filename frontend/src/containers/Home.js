@@ -7,8 +7,8 @@ const Home = () => (
             <h1 className='display-4'>Automated Spectrum Management and Frequency Allocated System</h1>
             <p className='lead'>This is an incredible authentication system with production level features!</p>
             <hr className='my-4' />
-            <p>Click the Log In button</p>
-            <Link className='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
+            <p>Create Your Profile</p>
+            <Link className='btn btn-primary btn-lg' to='/create-profile' role='button'>Create</Link>
         </div>
     </div>
 );

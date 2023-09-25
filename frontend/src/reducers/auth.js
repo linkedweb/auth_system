@@ -17,13 +17,16 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
-    LOGOUT
+    LOGOUT,
+    CREATE_PROFILE_FAIL,
+    CREATE_PROFILE_SUCCESS
 } from '../actions/types';
 
 const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
+    isProfileCreated : null,
     user: null
 };
 
