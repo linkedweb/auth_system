@@ -305,7 +305,7 @@ export const createprofile = (name, email, contact, designation, organization, r
     console.log(body);
     try {
         //
-        const res = await axios.post('http://localhost:8000/auth/users/', body, config);
+        const res = await axios.post('http://localhost:8000/profiles/create/', body, config);
         console.log('request posted');
         dispatch({
             type: CREATE_PROFILE_SUCCESS,
@@ -314,7 +314,7 @@ export const createprofile = (name, email, contact, designation, organization, r
         console.log('payload dispatched');
     } 
     catch (err) {
-        console.log(err)
+        console.error(err.response.data);
         dispatch({
             type: CREATE_PROFILE_FAIL
         })
