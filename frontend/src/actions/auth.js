@@ -21,7 +21,9 @@ import {
     FACEBOOK_AUTH_FAIL,
     LOGOUT,
     CREATE_PROFILE_FAIL,
-    CREATE_PROFILE_SUCCESS
+    CREATE_PROFILE_SUCCESS,
+    USER_PROFILE_LOADED_FAIL,
+    USER_PROFILE_LOADED_SUCCESS
 } from './types';
 
 export const load_user = () => async dispatch => {
@@ -311,6 +313,7 @@ export const createprofile = (name, email, contact, designation, organization, r
             type: CREATE_PROFILE_SUCCESS,
             payload: res.data
         });
+        // dispatch(load_profile());
         console.log('payload dispatched');
     } 
     catch (err) {
@@ -320,3 +323,37 @@ export const createprofile = (name, email, contact, designation, organization, r
         })
     }
 };
+
+
+
+// profile
+export const loadUserProfile = () => async dispatch => {
+    console.log('load_profile')
+    console.log(localStorage.getItem('access'))
+    if (localStorage.getItem('access')) {
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `JWT ${localStorage.getItem('access')}`,
+                        'Accept': 'application/json'
+                    }
+                }; 
+    try {
+        console.log('inside-loaduserprof1');
+        const res = await axios.get('http://localhost:8000/user/profile/', config);
+        console.log('inside-loaduserprof2');
+        console.log(res);
+        dispatch({
+            type: USER_PROFILE_LOADED_SUCCESS,
+            payload: res.data,
+        });
+    } catch (err) {
+        console.error(err);
+        dispatch({
+            type: USER_PROFILE_LOADED_FAIL,
+        });
+    }
+    }
+};
+
+

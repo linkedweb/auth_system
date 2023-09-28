@@ -19,7 +19,9 @@ import {
     FACEBOOK_AUTH_FAIL,
     LOGOUT,
     CREATE_PROFILE_FAIL,
-    CREATE_PROFILE_SUCCESS
+    CREATE_PROFILE_SUCCESS,
+    USER_PROFILE_LOADED_SUCCESS,
+    USER_PROFILE_LOADED_FAIL
 } from '../actions/types';
 
 const initialState = {
@@ -27,7 +29,9 @@ const initialState = {
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
     isProfileCreated : null,
-    user: null
+    user: null,
+    profile:null,
+    loading:true
 };
 
 export default function(state = initialState, action) {
@@ -70,6 +74,16 @@ export default function(state = initialState, action) {
                 ...state,
                 user: null
             }
+        case USER_PROFILE_LOADED_SUCCESS:
+            return {
+                ...state,
+                user: payload
+            }
+        case USER_PROFILE_LOADED_SUCCESS:
+            return {
+                    ...state,
+                    user: null
+            }
         case GOOGLE_AUTH_FAIL:
         case FACEBOOK_AUTH_FAIL:
         case LOGIN_FAIL:
@@ -84,6 +98,17 @@ export default function(state = initialState, action) {
                 isAuthenticated: false,
                 user: null
             }
+        case USER_PROFILE_LOADED_SUCCESS:
+            return {
+                ...state,
+                profile: payload,
+                loading: false,
+            };
+        case USER_PROFILE_LOADED_FAIL:
+            return {
+                ...state,
+                loading: false,
+            };
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
         case PASSWORD_RESET_CONFIRM_SUCCESS:

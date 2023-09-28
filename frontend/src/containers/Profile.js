@@ -1,35 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// In your React component
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { loadUserProfile } from '../actions/auth';
 
-const Profile = () => {
-  const [userData, setUserData] = useState(null);
+const Profile = ({ loadUserProfile, profile }) => {
+    useEffect(() => {
+        loadUserProfile();
+    }, [loadUserProfile]);
 
-  useEffect(() => {
-    // Make an HTTP GET request to your Django API endpoint
-    axios.get('http://localhost:8000/user/profile/')
-      .then(response => {
-        // Set the fetched user data in the component's state
-        setUserData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
-  }, []);
-
-  return (
-    <div>
-      <h2>User Profile</h2>
-      {userData ? (
+    return (
         <div>
-          <p>Name: {userData.name}</p>
-          <p>Email: {userData.email}</p>
-          {/* Add more user data fields here */}
+            {profile ? (
+                <div>
+                    <h1>{profile.name}'s Profile</h1>
+                    <p>Email: {profile.email}</p>
+                    {/* Add other profile fields here */}
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
-      ) : (
-        <p>Loading user data...</p>
-      )}
-    </div>
-  );
+    );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+    profile: state.auth.profile,
+});
+
+export default connect(mapStateToProps, { loadUserProfile })(Profile);
