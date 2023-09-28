@@ -210,6 +210,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 }
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
+AUTH_PROFILE_MODULE = 'accounts.UserProfileAccount'
 
 CORS_ALLOW_ALL_ORIGINS = True
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager, Group, Permission
+from django.conf import settings
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -55,6 +56,7 @@ class ProfileAccountManager(BaseUserManager):
         return user
 
 class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     contact = models.CharField(max_length=255)
@@ -80,4 +82,5 @@ class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
     
     def __str__(self):
         return self.email
+
 
