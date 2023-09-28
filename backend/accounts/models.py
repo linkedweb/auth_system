@@ -56,7 +56,7 @@ class ProfileAccountManager(BaseUserManager):
         return user
 
 class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,default=None)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     contact = models.CharField(max_length=255)
@@ -67,7 +67,7 @@ class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)
     objects = ProfileAccountManager()
-    groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, related_name='user_profile_accounts_groups')
+    # groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, related_name='user_profile_accounts_groups')
     user_permissions = models.ManyToManyField(
         Permission,
         verbose_name='user permissions',
@@ -76,6 +76,7 @@ class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
     )
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'designation']
+    
 
     def get_full_name(self):
         return self.name

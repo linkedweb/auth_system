@@ -12,8 +12,6 @@ from rest_framework import status
 from rest_framework.decorators import authentication_classes, permission_classes
 
 
-
-
 class ProfileCreateView(generics.CreateAPIView):
     queryset = UserProfileAccount.objects.all()
     serializer_class = UserProfileAccountSerializer
@@ -54,4 +52,5 @@ class UserProfileDetailView(generics.RetrieveAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except UserProfileAccount.DoesNotExist:
             raise Http404("User profile not found")
-    
+
+

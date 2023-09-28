@@ -12,7 +12,7 @@ class UserCreateSerializer(UserCreateSerializer):
         fields = ('id', 'email', 'first_name', 'last_name', 'password','user_accounts_groups')
 
 class UserProfileAccountSerializer(serializers.ModelSerializer):
-    user_profile_accounts_groups = serializers.PrimaryKeyRelatedField(many=True,queryset=Group.objects.all(), required=False)
+    # user_profile_accounts_groups = serializers.PrimaryKeyRelatedField(many=True,queryset=Group.objects.all(), required=False)
     class Meta:
         model = UserProfileAccount
-        fields = ('id', 'name', 'email', 'contact', 'designation', 'organization', 'radiodetails', 'radiosetdetails','user_profile_accounts_groups')
+        fields = ('id', 'name', 'email', 'contact', 'designation', 'organization', 'radiodetails', 'radiosetdetails')
