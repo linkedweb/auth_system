@@ -1,28 +1,62 @@
-// In your React component
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { loadUserProfile } from '../actions/auth';
+import { loadUserProfile } from '../actions/auth'; // Replace with the correct action import
 
-const Profile = ({ loadUserProfile, profile, email}) => {
+const Profile = ({ loadUserProfile, profile, email }) => {
     useEffect(() => {
-        loadUserProfile(email);
-    }, [loadUserProfile,email]);
-    console.log('inside profile.js');
-    console.log('printing profile name');
-    console.log(profile);
+        // Dispatch the action to load the user profile when the component mounts.
+        loadUserProfile(email); // Dispatch the action with the user's email
+    }, [loadUserProfile, email]);
 
-  //  console.log(profile.name);
+    // State to manage editable fields
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedProfile, setEditedProfile] = useState({});
+
+    // Function to handle profile edits
+    const handleEdit = () => {
+        setIsEditing(true);
+        setEditedProfile({ ...profile });
+    };
+
+    // Function to handle save changes
+    const handleSave = () => {
+        // Implement the logic to save edited profile data to the server
+        setIsEditing(false);
+        // Dispatch an action to update the profile in Redux state
+    };
+
     return (
         <div>
-            {profile ? (
+            {isEditing ? (
                 <div>
-                  <p>profile is not empty</p>
-                    <h1>{profile.name}'s Profile</h1>
-                    <p>Email: {profile.email}</p>
-                    {/* Add other profile fields here */}
+                    {/* Input fields for editing */}
+                    <input
+                        type="text"
+                        value={editedProfile.name}
+                        onChange={(e) =>
+                            setEditedProfile({ ...editedProfile, name: e.target.value })
+                        }
+                    />
+                    {/* Add more input fields for other editable profile data */}
+                    <button onClick={handleSave}>Save</button>
                 </div>
             ) : (
-                <p>Loading...</p>
+                <div>
+                    {/* Display user profile */}
+                    {profile ? (
+                        <>
+                            <h1>{profile.name}'s Profile</h1>
+                            <p>Email: {profile.email}</p>
+                            <p>Designation: {profile.designation}</p>
+                            <p>Organization: {profile.organization}</p>
+                            <p>Location: {profile.location}</p>
+                            {/* Add profile image and edit button */}
+                        </>
+                    ) : (
+                        <p>No Profile Found :/</p>
+                    )}
+                </div>
+
             )}
         </div>
     );
