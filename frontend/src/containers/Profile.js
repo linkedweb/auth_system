@@ -1,3 +1,4 @@
+// React component (Profile.js)
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { loadUserProfile } from '../actions/auth'; // Replace with the correct action import
@@ -26,7 +27,7 @@ const Profile = ({ loadUserProfile, profile, email }) => {
     };
 
     return (
-        <div>
+        <div className="card">
             {isEditing ? (
                 <div>
                     {/* Input fields for editing */}
@@ -51,12 +52,14 @@ const Profile = ({ loadUserProfile, profile, email }) => {
                             <p>Organization: {profile.organization}</p>
                             <p>Location: {profile.location}</p>
                             {/* Add profile image and edit button */}
+                            <button className="me-2" onClick={handleEdit}>
+                                Edit
+                            </button>
                         </>
                     ) : (
-                        <p>No Profile Found :/</p>
+                        <p className="no-profile-message">No Profile Found :/</p>
                     )}
                 </div>
-
             )}
         </div>
     );
