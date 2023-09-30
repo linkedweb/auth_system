@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { useParams } from "react-router-dom";
 import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -25,6 +25,8 @@ import {
     USER_PROFILE_LOADED_FAIL,
     USER_PROFILE_LOADED_SUCCESS
 } from './types';
+
+
 
 export const load_user = () => async dispatch => {
     console.log(localStorage.getItem('access'));
@@ -107,18 +109,24 @@ export const login = (email, password) => async dispatch => {
     };
 
     const body = JSON.stringify({ email, password });
-    console.log(body);
+    // console.log(body);
     try {
         const res = await axios.post('http://localhost:8000/auth/jwt/create/', body, config);
+        console.log('checking email');
         console.log(res);
+        console.log(res.data);
+        console.log(res.data.access);
+        console.log('checking email');
+        console.log(res.body);
+        console.log(email);
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: res.data
+            payload: {
+                data: res.data,
+                email: email
+            }
         });
-        console.log('logged in');
         dispatch(load_user());
-        console.log('loaded user');
-
     } catch (err) {
         console.log(err);
         dispatch({
@@ -311,7 +319,7 @@ export const createprofile = (name, email, contact, designation, organization, r
         console.log('request posted');
         dispatch({
             type: CREATE_PROFILE_SUCCESS,
-            payload: res.data
+            payload: res.data.name
         });
         // dispatch(load_profile());
         console.log('payload dispatched');
@@ -327,32 +335,38 @@ export const createprofile = (name, email, contact, designation, organization, r
 
 
 // profile
-export const loadUserProfile = () => async dispatch => {
-    console.log('load_profile')
-    console.log(localStorage.getItem('access'))
-    if (localStorage.getItem('access')) {
+export const loadUserProfile = (email) => async dispatch => {
+    console.log('load_profile');
+    console.log(email);
+    // console.log(localStorage.getItem('access'))
+    // if (localStorage.getItem('access')) {
                 const config = {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `JWT ${localStorage.getItem('access')}`,
+                    //     'Authorization': `JWT ${localStorage.getItem('access')}`,
                         'Accept': 'application/json'
                     }
                 }; 
     try {
         console.log('inside-loaduserprof1');
-        const res = await axios.get('http://localhost:8000/user/profile/', config);
+        // const {name} = useParams();
+        // const encodedName = encodeURIComponent(name);
+        const url = `http://localhost:8000/user/profile/${email}/`;
+        console.log(url);
+        const res = await axios.get(`http://localhost:8000/user/profile/${email}/`, config);
         console.log('inside-loaduserprof2');
-        console.log(res);
+        // console.log(res.data);
         dispatch({
             type: USER_PROFILE_LOADED_SUCCESS,
             payload: res.data,
         });
+        console.log('payload dispatched inside-loaduserprof2');
     } catch (err) {
         console.error(err);
         dispatch({
             type: USER_PROFILE_LOADED_FAIL,
         });
-    }
+    // }
     }
 };
 

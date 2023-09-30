@@ -12,7 +12,8 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.social.urls')),
     path('profiles/create/', ProfileCreateView.as_view(), name='profile-create'),
-    path('user/profile/', UserProfileDetailView.as_view(), name='get_user_profile'),
+    # path('user/profile/', user_profile, name='get_user_profile'),
+    path('user/profile/<str:email>/', UserProfileDetailView.as_view(), name='get_user_profile'),
 ]
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]

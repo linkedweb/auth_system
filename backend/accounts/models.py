@@ -16,7 +16,7 @@ class UserAccountManager(BaseUserManager):
         return user
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_account')
+    # user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_account')
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
@@ -57,7 +57,7 @@ class ProfileAccountManager(BaseUserManager):
         return user
 
 class UserProfileAccount(AbstractBaseUser, PermissionsMixin):
-    user_account = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,default=None,related_name='user_profile_account')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,default=None,related_name='user_profile_account')
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     contact = models.CharField(max_length=255)
