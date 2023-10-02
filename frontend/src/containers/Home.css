@@ -1,0 +1,99 @@
+/* Home.css */
+
+/* Style the container */
+.container {
+    max-width: 1000px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center align the container */
+    padding: 20px;
+    background-color: #d1dee4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the heading */
+.display-4 {
+    font-size: 48px; /* Larger heading for a professional look */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style the lead paragraph */
+.lead {
+    font-size: 20px; /* Increase font size for readability */
+    color: #555; /* Slightly darker text color */
+}
+
+/* Style the horizontal rule */
+.my-4 {
+    border-top: 2px solid #007bff; /* Use a blue color for the line */
+    margin: 40px 0; /* More spacing for better visual separation */
+}
+
+/* Style the "Create Your Profile" text */
+.p {
+    font-size: 36px; /* Larger text for emphasis */
+    font-weight: bold;
+    color: #007bff; /* Blue color for emphasis */
+}
+
+/* Style the "Create" button */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 24px;
+    padding: 12px 24px; /* Increase button padding for better desktop usability */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style the "Create" button on hover */
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #3498db; /* Change to your desired navbar color */
+    padding: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(39, 39, 44, 0.2);
+}
+
+.navbar-brand {
+    color: #c9d8dd; /* Change to your desired font color */
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif; /* Change to a professional font */
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #c6d6df;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ecf0f1; /* Change to a lighter text color on hover */
+    background-color: #3b6d8f; /* Change to a different background color on hover */
+    border-radius: 5px; /* Add a subtle border-radius on hover */
+}
+
+/* Style the "AUTH SYSTEM" text in the navbar */
+.navbar-brand .auth-system {
+    color: #9c7d75; /* Change to your desired font color */
+    font-size: 24px; /* Change to your desired font size */
+    font-style: italic; /* Add font style if desired */
+}

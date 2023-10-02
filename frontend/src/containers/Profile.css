@@ -1,73 +1,73 @@
-/* // CSS file (styles.css) */
-/* Apply a global reset to improve consistency */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Profile.css */
 
-body {
-    background-color: #f7f7ff;
-    font-family: Arial, sans-serif;
-}
-
+/* Container styles */
 .card {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 0.25rem;
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     padding: 20px;
-}
-
-/* Remove this class if not needed */
-.me-2 {
-    margin-right: 0.5rem;
-}
-
-/* Improve spacing and alignment of text */
-.card h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-/* Style for no profile found */
-.no-profile-message {
-    color: #555;
+    margin: 20px;
     text-align: center;
-    font-size: 1.2rem;
-    margin-top: 20px;
 }
 
-.profile-details h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+/* Profile picture styles */
+.profile-picture-box {
+    margin-bottom: 20px;
+}
 
-.text-style {
-    color: #1c5abee6; /* Blue color */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1c5abee6; /* Blue color */
+}
+
+/* Edit button styles */
+.edit-button {
+    background-color: #1c5abee6; /* Blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Input field styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
     font-size: 16px;
 }
 
-.profile-head{
-    margin-bottom: 20px;
+/* Save button styles */
+.save-button {
+    background-color: #4caf50; /* Green color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.container-profile{
-    margin: 20px; /* Adjust the margin size as needed */
-    padding: 20px; /* Optional padding inside the container */
-    background-color: rgb(232, 236, 237); /* Change the background color to blue */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+/* Profile text styles */
+.profile-text {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.container{
-    margin: 20px; /* Adjust the margin size as needed */
-    padding: 20px;
-    background-color: rgb(192, 225, 235); /* Change the background color to blue */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+/* No profile message styles */
+.no-profile-message {
+    color: #555;
+    font-size: 20px;
 }
+
+/* Additional styling can be added as needed */
+
