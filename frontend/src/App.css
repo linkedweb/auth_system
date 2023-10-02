@@ -1,0 +1,21 @@
+/* Define global styles that apply to the entire application */
+body {
+  background-color: #f0f3e9;
+  /* Add other global body styles here */
+}
+
+/* Font definitions or other global styles can be placed here */
+
+/* Avoid using a global reset (*) to prevent affecting all pages individually */
+/* Remove the following global reset styles:
+ * {
+ *   margin: 0;
+ *   padding: 0;
+ *   box-sizing: border-box;
+ *   font-family: "Reem Kufi", sans-serif !important;
+ * }
+ */
+
+/* Add any other global styles or font definitions here */
+
+/* No need to define specific styles for individual components in this file */

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../actions/auth';
-import axios from 'axios';
+import axios from 'axios'; 
+import './Signup.css'; // Import the CSS file
+
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false);
@@ -100,7 +102,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='password'
                         value={password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='1'
                         required
                     />
                 </div>
@@ -112,7 +114,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         name='re_password'
                         value={re_password}
                         onChange={e => onChange(e)}
-                        minLength='6'
+                        minLength='1'
                         required
                     />
                 </div>
@@ -135,5 +137,6 @@ const Signup = ({ signup, isAuthenticated }) => {
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
+
 
 export default connect(mapStateToProps, { signup })(Signup);

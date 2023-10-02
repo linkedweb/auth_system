@@ -1,0 +1,73 @@
+/* Profile.css */
+
+/* Container styles */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+/* Profile picture styles */
+.profile-picture-box {
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1c5abee6; /* Blue color */
+}
+
+/* Edit button styles */
+.edit-button {
+    background-color: #1c5abee6; /* Blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Input field styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Save button styles */
+.save-button {
+    background-color: #4caf50; /* Green color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Profile text styles */
+.profile-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* No profile message styles */
+.no-profile-message {
+    color: #555;
+    font-size: 20px;
+}
+
+/* Additional styling can be added as needed */
+

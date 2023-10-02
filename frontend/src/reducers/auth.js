@@ -17,14 +17,22 @@ import {
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
     FACEBOOK_AUTH_FAIL,
-    LOGOUT
+    LOGOUT,
+    CREATE_PROFILE_FAIL,
+    CREATE_PROFILE_SUCCESS,
+    USER_PROFILE_LOADED_SUCCESS,
+    USER_PROFILE_LOADED_FAIL
 } from '../actions/types';
 
 const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null
+    isProfileCreated : null,
+    user: null,
+    profile:null,
+    loading:true,
+    email: localStorage.getItem('email')
 };
 
 export default function(state = initialState, action) {
@@ -37,6 +45,17 @@ export default function(state = initialState, action) {
                 isAuthenticated: true
             }
         case LOGIN_SUCCESS:
+            const { data, email } = payload;
+            localStorage.setItem('access', data.access);
+            localStorage.setItem('refresh', data.refresh);
+            localStorage.setItem('email', email);
+            return {
+                ...state,
+                isAuthenticated: true,
+                access: data.access,
+                refresh: data.refresh,
+                email: email
+            }
         case GOOGLE_AUTH_SUCCESS:
         case FACEBOOK_AUTH_SUCCESS:
             localStorage.setItem('access', payload.access);
@@ -45,7 +64,7 @@ export default function(state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 access: payload.access,
-                refresh: payload.refresh
+                refresh: payload.refresh,
             }
         case SIGNUP_SUCCESS:
             return {
@@ -66,6 +85,16 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 user: null
+            }
+        case USER_PROFILE_LOADED_SUCCESS:
+            return {
+                ...state,
+                profile: payload
+            }
+        case USER_PROFILE_LOADED_FAIL:
+            return {
+                    ...state,
+                    profile: null
             }
         case GOOGLE_AUTH_FAIL:
         case FACEBOOK_AUTH_FAIL:

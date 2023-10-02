@@ -1,0 +1,49 @@
+/* Signup.css */
+
+/* Styles for the container */
+.container {
+    margin-top: 5rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styles for headings */
+h1 {
+    font-size: 2rem; /* You can adjust this as needed */
+}
+
+/* Styles for form elements */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem; /* Adjust the font size for form elements */
+}
+
+/* Style the buttons */
+.btn {
+    margin-top: 0.5rem; /* Reduce top margin */
+    padding: 0.3rem 1rem; /* Adjust padding for a shorter button */
+    width: auto; /* Let the button width be determined by its content */
+    font-size: 1rem; /* Adjust the font size for buttons to make them even */
+}
+
+/* Style the Google and Facebook buttons */
+.btn-danger, .btn-primary {
+    margin-top: 0.5rem; /* Reduce top margin */
+    padding: 0.3rem 1rem; /* Adjust padding for a shorter button */
+    width: auto; /* Let the button width be determined by its content */
+    font-size: 1rem; /* Adjust the font size for button groups */
+}
+
+/* Style the Sign In link */
+.mt-3 a {
+    text-decoration: underline;
+}
