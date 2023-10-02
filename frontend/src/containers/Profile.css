@@ -43,3 +43,31 @@ body {
     font-size: 1.2rem;
     margin-top: 20px;
 }
+
+.profile-details h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+.text-style {
+    color: #1c5abee6; /* Blue color */
+    font-size: 16px;
+}
+
+.profile-head{
+    margin-bottom: 20px;
+}
+
+.container-profile{
+    margin: 20px; /* Adjust the margin size as needed */
+    padding: 20px; /* Optional padding inside the container */
+    background-color: rgb(232, 236, 237); /* Change the background color to blue */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+.container{
+    margin: 20px; /* Adjust the margin size as needed */
+    padding: 20px;
+    background-color: rgb(192, 225, 235); /* Change the background color to blue */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
